@@ -1,0 +1,14 @@
+<script type="text/javascript">
+var userFeed = new Instafeed({
+get: 'user',
+userId: '7332909379',
+<!-- accessToken: '7332909379.06f27e3.c340a27808de46c9bc950487bf322320', -->
+accessToken: '7332909379.1677ed0.ad43af611135444c815544b0a8b55ad5',
+resolution: 'low_resolution',
+template: '<a href="{{link}}" target="_blank" id="{{id}}"><img src="{{image}}" />',
+sortBy: 'most-recent',
+limit: 6,
+links: false
+});
+userFeed.run();
+</script>
