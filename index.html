@@ -61,7 +61,7 @@ published: true
 								<div class="col-4 col-5-large col-12-medium">
 									<div id="instafeed">{% include instafeed.html %}</div>
 										<script type="text/javascript">
-											var feed = new Instafeed({
+											var userFeed = new Instafeed({
 											get: 'user',
 											userId: '7332909379',
 											<!-- accessToken: '7332909379.06f27e3.c340a27808de46c9bc950487bf322320', -->
@@ -72,7 +72,7 @@ published: true
 											  limit: 6,
 											  links: false
 											});
-											feed.run();
+											userFeed.run();
 											</script>
 								</div>
 
