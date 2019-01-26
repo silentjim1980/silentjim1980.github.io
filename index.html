@@ -69,7 +69,8 @@ published: true
 							<div class="row">
 								<div class="col-4 col-5-large col-12-medium">
 									<div id="instafeed">{% include instafeed.html %}</div>
-										<script type="text/javascript">
+									{% raw %}
+										{{ <script type="text/javascript">
 											var userFeed = new Instafeed({
 											get: 'user',
 											userId: '7332909379',
@@ -82,7 +83,8 @@ published: true
 											  links: false
 											});
 											userFeed.run();
-											</script>
+											</script> }}
+											{% endraw %}
 								</div>
 
 								<div class="col-8 col-7-large col-12-medium">
