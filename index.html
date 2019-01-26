@@ -60,10 +60,8 @@ published: true
 							<div class="row">
 								<div class="col-4 col-5-large col-12-medium">
 									<div id="instafeed">{% include instafeed.html %}</div>
-										
-								</div>
-<script type="text/javascript">
-											var userFeed = new Instafeed({
+										<script type="text/javascript">
+											var feed = new Instafeed({
 											get: 'user',
 											userId: '7332909379',
 											<!-- accessToken: '7332909379.06f27e3.c340a27808de46c9bc950487bf322320', -->
@@ -74,8 +72,10 @@ published: true
 											  limit: 6,
 											  links: false
 											});
-											userFeed.run();
+											feed.run();
 											</script>
+								</div>
+
 								<div class="col-8 col-7-large col-12-medium">
 									<div class="posts">
 									{% for post in site.posts %}
