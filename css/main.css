@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,600italic,700");
-@import url("font-awesome.min.css");
+/*@import url("font-awesome.min.css");*/
 
 /*
 	Miniport by HTML5 UP
@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	font: 18px/1.4 $helvetica;
 }
 
 ol, ul {
