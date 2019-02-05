@@ -16,11 +16,6 @@
 html {
   font-size: 100%;
 }
-#grad1 {
-  height: 200px;
-  background-color: red; /* For browsers that do not support gradients */
-  background-image: linear-gradient(red, yellow); /* Standard syntax (must be last) */
-}
 
 body {
 	background-color: $white;
@@ -38,7 +33,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+ /*  color: $darkerGray; */
+ color: $white;
   font-weight: bold;
 
   line-height: 1.7;
