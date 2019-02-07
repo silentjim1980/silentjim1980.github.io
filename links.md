@@ -3,7 +3,7 @@ layout: page
 title: Links
 permalink: /links/
 ---
-
+{% raw %}
 					<header>
 					<h2>Programs / Links / Files</h2>
 					<p>Stuff that I use that others might find helpful * $ = paid software * otherwise all software listed is free</p>
@@ -141,3 +141,4 @@ permalink: /links/
 								</ul>
 								<!-- End of Tree 4 -->
 								</div>
+{% endraw %}
