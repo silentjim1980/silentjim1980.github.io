@@ -1,0 +1,107 @@
+---
+layout: page
+title: Portfolio
+permalink: /portfolio/
+---
+
+					<article id="portfolio" class="wrapper style1">
+						<div class="container">
+							<div class="row">
+								
+								<header>
+									<h2>Here’s some stuff I made recently.</h2>
+									<p>These works & projects I may not have posted on social media.</p>
+								</header>
+									<div class="row" style="">
+										<!-- IMAGES -->
+										<!-- <a data-fancybox="gallery" href="#"><img src="#"></a> -->
+
+										<a data-fancybox="gallery" href="images/gallery/TheReaping.png"><img src="images/gallery/TheReaping_t.jpg">
+										<a data-fancybox="gallery" href="images/gallery/TerminatedVaping.png"><img src="images/gallery/TerminatedVaping_t.jpg">
+										<a data-fancybox="gallery" href="images/gallery/darkness.png"><img src="images/gallery/darkness_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/ShouldaVaped.png"><img src="images/gallery/ShouldaVaped_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/PlumeStreaks.png"><img src="images/gallery/PlumeStreaks_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/VAA.png"><img src="images/gallery/VAA_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/NeonVapeAholics.png"><img src="images/gallery/NeonVapeAholics_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/BettyWhiteRoseParade.png"><img src="images/gallery/BettyWhiteRoseParade_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/HannahHouse.png"><img src="images/gallery/HannahHouse_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/PlumeTV.png"><img src="images/gallery/PlumeTV_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/skullySJ.png"><img src="images/gallery/skullySJ_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/SJstamp.png"><img src="images/gallery/SJstamp_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/FoolishVapeSquad.png"><img src="images/gallery/FoolishVapeSquad_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/OviDesignz.png"><img src="images/gallery/OviDesignz_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/TheStanding.png"><img src="images/gallery/TheStanding_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/omgSTFU.png"><img src="images/gallery/omgSTFU_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/1Untitled.png"><img src="images/gallery/1Untitled_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/Untitled.png"><img src="images/gallery/Untitled_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/2Untitled.png"><img src="images/gallery/2Untitled_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/CLOVERFIELDrd.png"><img src="images/gallery/CLOVERFIELDrd_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/a copy-1.jpg"><img src="images/gallery/a copy-1.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/bike11.png"><img src="images/gallery/bike11_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/bloodrings.bmp"><img src="images/gallery/bloodrings_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/bluerings.bmp"><img src="images/gallery/bluerings_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/bw copy.jpg"><img src="images/gallery/bw copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/CardSetProof.png"><img src="images/gallery/CardSetProof_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/Devil Dogs.png"><img src="images/gallery/Devil Dogs_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/Different.png"><img src="images/gallery/Different_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/fan2 copy-1.jpg"><img src="images/gallery/fan2 copy-1_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/future.jpg"><img src="images/gallery/future_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/G2-OP copy.jpg"><img src="images/gallery/G2-OP copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/gastank21.png"><img src="images/gallery/gastank21_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/glass.bmp"><img src="images/gallery/glass_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/glassexplode copy-1.jpg"><img src="images/gallery/glassexplode copy-1_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/GoldenGirth2.png"><img src="images/gallery/GoldenGirth2_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/greyrings.bmp"><img src="images/gallery/greyrings_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/gunnyglass.bmp"><img src="images/gallery/gunnyglass_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/JediSig.png"><img src="images/gallery/JediSig_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/nightmare.jpg"><img src="images/gallery/nightmare_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/omgSTFU.png"><img src="images/gallery/omgSTFU_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/orangealien.bmp"><img src="images/gallery/orangealien_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/razor.bmp"><img src="images/gallery/razor_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/redglass.bmp"><img src="images/gallery/redglass_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/redrings.bmp"><img src="images/gallery/redrings_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/redspike2 copy.jpg"><img src="images/gallery/redspike2 copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/reflections copy.jpg"><img src="images/gallery/reflections copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/Revolution.jpg"><img src="images/gallery/Revolution_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/RGCity.png"><img src="images/gallery/RGCity_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/silverrings.bmp"><img src="images/gallery/silverrings_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/silver.bmp"><img src="images/gallery/silver_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/slider1-copy1.png"><img src="images/gallery/slider1-copy1_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/spawn copy.jpg"><img src="images/gallery/spawn copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/swirls.jpg"><img src="images/gallery/swirls_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/swirlscolor copy.jpg"><img src="images/gallery/swirlscolor copy_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/tank32.png"><img src="images/gallery/tank32_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/twitterbg3.gif"><img src="images/gallery/twitterbg3_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/Untitled-1 (2).png"><img src="images/gallery/Untitled-1 (2)_t.jpg"></a>
+										<a data-fancybox="gallery" href="images/gallery/vamp.jpg"><img src="images/gallery/vamp_t.jpg"></a>
+										
+										<!-- END OF IMAGES -->
+									</div>
+									
+							</div>
+							
+						</div>
+						</br></br>
+									<a href="#portfolio2" class="button"><span style="">Video's</span>& Animations</a>
+					</article>
+
+
+
+					<article id="portfolio2" class="wrapper style2">
+						<div class="container">
+							<div class="row">
+								<header>
+								<h2>Video's & Animations.</h2>
+								<p>These are video's or animations that I have done.</p>
+								</header>
+									<div class="row" style="">				  
+										  <!-- VIDEOS -->
+										<iframe width="320" height="264" src="https://www.youtube.com/embed/HXp9ktKsLmY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+										<iframe width="320" height="264" src="https://www.youtube.com/embed/fuEt_1TKRLE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+										<iframe width="320" height="264" src="https://www.youtube.com/embed/I-bBR7wP9GU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										<!-- END OF VIDEOS -->
+									</div>
+							</div>
+						</div>	
