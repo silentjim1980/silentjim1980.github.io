@@ -25,14 +25,6 @@ permalink: /portfolio/
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/NeonVapeAholics.png"><img src="{{ site.baseurl }}/images/gallery/NeonVapeAholics_t.jpg"></a>
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/skullySJ.png"><img src="{{ site.baseurl }}/images/gallery/skullySJ_t.jpg"></a>
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/FoolishVapeSquad.png"><img src="{{ site.baseurl }}/images/gallery/FoolishVapeSquad_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/OviDesignz.png"><img src="{{ site.baseurl }}/images/gallery/OviDesignz_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/1Untitled.png"><img src="{{ site.baseurl }}/images/gallery/1Untitled_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/Untitled.png"><img src="{{ site.baseurl }}/images/gallery/Untitled_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/2Untitled.png"><img src="{{ site.baseurl }}/images/gallery/2Untitled_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/CLOVERFIELDrd.png"><img src="{{ site.baseurl }}/images/gallery/CLOVERFIELDrd_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/a copy-1.jpg"><img src="{{ site.baseurl }}/images/gallery/a copy-1.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/bike11.png"><img src="{{ site.baseurl }}/images/gallery/bike11_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/bw copy.jpg"><img src="{{ site.baseurl }}/images/gallery/bw copy_t.jpg"></a>
 
 										
 										<!-- END OF IMAGES -->
@@ -56,11 +48,7 @@ permalink: /portfolio/
 								</header>
 									<div class="row" style="">				  
 										  <!-- VIDEOS -->
-										<iframe width="320" height="264" src="https://www.youtube.com/embed/HXp9ktKsLmY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-										<iframe width="320" height="264" src="https://www.youtube.com/embed/fuEt_1TKRLE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-										<iframe width="320" height="264" src="https://www.youtube.com/embed/I-bBR7wP9GU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										  
 										<!-- END OF VIDEOS -->
 									</div>
 							</div>
