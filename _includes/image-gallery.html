@@ -6,4 +6,4 @@
     .image-gallery li a img {width: 100%; display: block;}
 </style>
 
-<ul class="image-gallery">{% for file in site.static_files %}{% if file.path contains include.folder %}{% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}{% assign filenameparts = file.path | split: "/" %}{% assign filename = filenameparts | last | replace: file.extname,"" %}<li><a href="{{ file.path }}" title="{{ filename }}"><img src="/images/gallery/" /><span>{{ filename }}</span></a></li>{% endif %}{% endif %}{% endfor %}</ul>
+<ul class="image-gallery">{% for file in site.static_files %}{% if file.path contains include.folder %}{% if file.extname == '.jpg' or file.extname == '.jpeg' or file.extname == '.JPG' or file.extname == '.JPEG' %}{% assign filenameparts = file.path | split: "/" %}{% assign filename = filenameparts | last | replace: file.extname,"" %}<li><a data-fancybox="gallery" href="{{ file.path }}" title="{{ filename }}"><img src="/images/gallery/" /><span>{{ filename }}</span></a></li>{% endif %}{% endif %}{% endfor %}</ul>
