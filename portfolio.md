@@ -16,15 +16,15 @@ permalink: /portfolio/
 								</header>
 									<div class="row" style="">
 										<!-- IMAGES -->
-										<!-- <a data-fancybox="gallery" href="#"><img src="#"></a> -->
+										<!-- <a data-fancybox="gallery" href="#"><img src="#"></a> 
 
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/TheReaping.png"><img src="{{ site.baseurl }}/{{ site.baseurl }}/images/gallery/TheReaping_t.jpg">
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/darkness.png"><img src="{{ site.baseurl }}/images/gallery/darkness_t.jpg"></a>
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/PlumeStreaks.png"><img src="{{ site.baseurl }}/images/gallery/PlumeStreaks_t.jpg"></a>
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/VAA.png"><img src="{{ site.baseurl }}/images/gallery/VAA_t.jpg"></a>
-										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/FoolishVapeSquad.png"><img src="{{ site.baseurl }}/images/gallery/FoolishVapeSquad_t.jpg"></a>
+										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/FoolishVapeSquad.png"><img src="{{ site.baseurl }}/images/gallery/FoolishVapeSquad_t.jpg"></a>-->
 
-										
+										{% include image-gallery.html folder="/uploads/album" %}
 										<!-- END OF IMAGES -->
 									</div>
 									
