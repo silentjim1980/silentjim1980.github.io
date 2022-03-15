@@ -16,5 +16,5 @@
 		{% assign filenameparts = file.path | split: "/" %}
 		{% assign filename = filenameparts | last | replace: file.extname,"" %}
 		
-<li><a data-fancybox="gallery" href="{{ file.path }}" title="{{ filename }}"><img src="/images/gallery/ alt="{{ filename }}" title="{{ filename }}" /><span>{{ filename }}</span></a></li>{% endif %}{% endif %}{% endfor %}
+<li><a data-fancybox="gallery" data-src="{{ file.path }}" title="{{ filename }}"><img src="/images/gallery/ alt="{{ filename }}" title="{{ filename }}" /><span>{{ filename }}</span></a></li>{% endif %}{% endif %}{% endfor %}
 </ul>
