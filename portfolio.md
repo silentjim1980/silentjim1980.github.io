@@ -24,7 +24,7 @@ permalink: /portfolio/
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/VAA.png"><img src="{{ site.baseurl }}/images/gallery/VAA_t.jpg"></a>
 										<a data-fancybox="gallery" href="{{ site.baseurl }}/images/gallery/FoolishVapeSquad.png"><img src="{{ site.baseurl }}/images/gallery/FoolishVapeSquad_t.jpg"></a>-->
 
-										{% include image-gallery.html folder="/uploads/album" %}
+										{% include image-gallery.html folder="/images/gallery" %}
 										<!-- END OF IMAGES -->
 									</div>
 									
