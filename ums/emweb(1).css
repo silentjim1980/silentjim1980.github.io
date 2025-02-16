@@ -1,0 +1,47 @@
+/** Custom CSS**/
+.text_link a{
+        color: yellow;
+}
+info{
+	cursor: pointer;
+}
+info:hover {
+	color: yellow;	
+}
+
+.nav-item:hover{
+	background-color: #6479a2;
+	border-radius: 4px;
+	padding: 0px;
+}
+.nav-link:hover{
+	color: #2d4e7b !important;
+}
+/** footer CSS **/
+.div_footer a:link{text-decoration: none;color:#fff;}
+.div_footer a:visited{text-decoration: none;color:#fff;}
+.div_footer a:hover{text-decoration: none;color:#fff;}
+.div_footer h6{
+	font-size: 0.85em;
+}
+.div_footer h5{
+	font-size: 0.90em;
+	font-weight: 500;
+}
+.custom_ads{
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	text-align: center;
+}
+.custom_ads a{
+	flex: 1;
+}
+.custom_ads a img{
+	height: auto;
+	width: 100%;
+}

@@ -1,0 +1,177 @@
+function load_script(script_url){
+	$.ajax({
+		url: script_url,
+		dataType: "script",
+		success: function(){
+			//good
+			//alert('ok');
+			//console.log('Loaded script: ' + script);
+		},
+		error: function(){
+			//error
+			//alert('fail');
+			//console.log('Could not load.' + script);
+		}
+	});
+}
+function getBrowserTimezone() {
+    var offsetMinutes = new Date().getTimezoneOffset(); // UTC와 로컬 시간의 차이 (분 단위)
+    var offsetHours = offsetMinutes / 60; // 시간 단위로 변환
+    
+    // UTC와 로컬 시간의 차이를 시간대로 출력
+    var offsetString = (offsetHours < 0 ? '+' : '-') + Math.abs(offsetHours);
+    
+    return 'UTC' + offsetString;
+}
+function add_toast(txt_head, txt_body){
+	var now_timestamp = Date.now();
+
+	var toast_place_Div = document.getElementById('toast_place');
+	var tDiv = document.createElement('div');
+	var tHeader = document.createElement('div');
+	var tBody = document.createElement('div');
+
+	tDiv.setAttribute('id', 'toast_'+ now_timestamp);
+	tDiv.setAttribute('class', 'toast');
+	tDiv.setAttribute('role', 'alert');
+	tDiv.setAttribute('aria-live', 'assertive');
+	tDiv.setAttribute('aria-atomic', 'true');
+	tDiv.setAttribute('data-delay', '5000');
+	//tHeader.setAttribute('class', 'toast-header text-dark');
+	tHeader.setAttribute('class', 'toast-header');
+	tBody.setAttribute('class', 'toast-body');
+	if (txt_head.indexOf('Warning') != -1){
+		tHeader.setAttribute('style', 'color:#000;background-color:#ffdc73;');
+		tBody.setAttribute('style', 'color:#000;background-color:#fff4d5');
+	}else if (txt_head.indexOf('Error') != -1){
+		tHeader.setAttribute('style', 'color:#000;background-color:#f8bcd0;');
+		tBody.setAttribute('style', 'color:#000;background-color:#fce4ec;');
+	}else{
+		tHeader.setAttribute('style', 'color:#182048;background-color:#c5cae8;');
+		tBody.setAttribute('style', 'color:#182048;background-color:#edeff8;');
+	}
+	if (txt_head.indexOf('Success') != -1){
+		txt_head = '<i class="far fa-smile-beam"></i> ' + txt_head;
+	}else if(txt_head.indexOf('Warning') != -1){
+		txt_head = '<i class="far fa-sad-tear"></i> ' + txt_head;
+	}
+	txtHeader = '<strong class="mr_auto">' + txt_head + '</strong>';
+	//txtHeader += '<small>mins ago</small>';
+	txtHeader += '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">';
+	txtHeader += '<span aria-hidden="true">&times;</span></button>'
+	
+	tHeader.innerHTML = txtHeader;
+	tBody.innerHTML = '<h5><small>' + txt_body + '</small></h5>';
+	
+	tDiv.appendChild(tHeader);
+	tDiv.appendChild(tBody);
+	toast_place_Div.appendChild(tDiv);
+	//alert(now_timestamp);
+	//alert(toast_place_Div.innerHTML);
+	try {
+		//To Do..
+		$('#toast_' + now_timestamp).toast('show');
+	} catch (e) {
+		console.log("error: ".concat(e.name, ": ").concat(e.message));
+	}	
+	//alert(now_timestamp);
+}
+function check_browser(){
+	var word;
+	var versionOrType = "another";
+	var ieName = navigator.appName;
+	var agent = navigator.userAgent.toLowerCase();
+	if (ieName == "MicroSoft Explorer") {
+		word = "msie ";
+	}else{
+		//IE11
+		if (agent.search("trident") > -1 ) word = "trident/.*rv:";
+		//IE12
+		else if (agent.search("edge/") > -1 ) word = "edge/";
+	}
+
+	var reg = new RegExp( word + "([0-9]{1,})(\\.{0,}[0-9]{0,1})");
+	if ( reg.exec( agent ) != null) {
+		versionOrType = RegExp.$1 + RegExp.$2;
+		add_toast('Warning!', 'This site may not function properly in Microsoft Explorer (IE).(Recommended browsers: Chrome, Firefox)');
+		return versionOrType;
+	}
+	return versionOrType;
+}
+function token_check(){
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6Lc6UbYUAAAAADk9fhFEmk-XKLd22rzn0O3UZbjH', {action: 'homepage'}).then(function(token) {
+			// 토큰을 받아다가 g-recaptcha 에다가 값을 넣어줍니다.
+			$('#g-recaptcha-response')[0].value = token;
+		});
+	});
+}
+function enable_loading_btn(e){
+	e.disabled = false;
+	var spinner_tag = '<div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span> </div>';
+	e.innerHTML = e.innerHTML.replace(spinner_tag,'');
+	console.debug('enable_loading_btn: ' + e.innerHTML);
+	console.debug('e.disabled: ' + e.disabled);
+}
+function json2str(j){
+	var pj = JSON.stringify(j);
+	var jsonDict = JSON.parse(pj);
+	var result;
+	//var pj = JSON.parse(j);
+	console.debug(pj.length);
+	for(var i in jsonDict) {
+		result += '<br><span class="j2s_key">' + i + '</span>: <span class="j2s_value">' + jsonDict[i] + '</span>';
+		console.debug(i + ', ' + jsonDict[i]);
+	}
+	return result;
+}
+
+function onlyNumber(){
+	if( event.keyCode<48 || event.keyCode>57 ){
+		if (event.keyCode != 46 && event.keyCode != 13){
+			event.returnValue=false;	
+		}
+	}
+}
+$(document).ready(function(){
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+	$('.loading').click(function(e) {
+	  var spinner_tag = '<div class="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span> </div>';
+	  e.target.innerHTML = spinner_tag + e.target.innerHTML;
+	  e.target.disabled = true;
+	  console.debug('loading start - e.disabled: ' + e.disabled);
+	});
+	$('.loading_sm').click(function(e) {
+	  e.target.disabled = true;
+	  console.debug('loading_sm start - e.disabled: ' + e.disabled);
+	});
+
+	var ad = $('#a_check');
+	var btns = $('button');
+	btns.attr('disabled', true);
+	setTimeout(function check(){
+		var ads = '0';
+		if(ad.css('visibility') == 'hidden' || ad.css('display') == 'none'){ads = '1';}
+		$.ajax({url : '/adsblock',
+			type : 'POST',
+			data : {'ads': ads},
+			success : function(data){
+				if (data.result == 'OK') {
+					//alert(data.data)
+				}
+			}
+		});
+		btns.attr('disabled', false);
+	}, 3000);
+});
+
+function confirmSubmit(txt="확실 한가요?") {
+	var r = confirm(txt);
+	if (r == true) {
+		return true;
+	} else {
+		return false;
+	}
+}
