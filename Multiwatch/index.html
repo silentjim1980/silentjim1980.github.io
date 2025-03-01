@@ -1,1 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Load jQuery for DOM manipulation and event handling -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Load Bootstrap JS for UI components and utilities -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Load Bootstrap CSS for styling -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Load Font Awesome for icons (e.g., play, mute, trash) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Style the body with a gradient background, light text, and full-page layout */
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); /* Dark gradient background */
+            color: #e0e0e0; /* Light gray text color */
+            padding: 0; /* Remove default padding */
+            font-family: 'Arial', sans-serif; /* Use Arial font */
+            display: flex; /* Flexbox for column layout */
+            flex-direction: column; /* Stack elements vertically */
+            min-height: 100vh; /* Fill full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        /* Style the header row at the top of the page */
+        .header-row {
+            background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
+            padding: 15px; /* Inner spacing */
+            text-align: center; /* Center content */
+            border-bottom: 1px solid #444; /* Subtle bottom border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        /* Style the header title */
+        .header-row h1 {
+            margin: 0; /* Remove default margin */
+            font-size: 24px; /* Set font size */
+            color: #fff; /* White text */
+        }
+        /* Style optional header image */
+        .header-row img {
+            max-height: 50px; /* Limit image height */
+            vertical-align: middle; /* Align with text */
+        }
+        /* Style the container for video players */
+        .video-container {
+            display: flex; /* Flexbox for layout */
+            flex-wrap: wrap; /* Wrap videos to new rows */
+            justify-content: center; /* Center videos horizontally */
+            column-gap: 10px; /* Space between columns */
+            row-gap: 15px; /* Space between rows */
+            flex-grow: 1; /* Expand to fill available space */
+            padding: 10px; /* Inner spacing */
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+            margin: 10px 0; /* Vertical spacing */
+        }
+        /* Style each video wrapper */
+        .video-outer {
+            position: relative; /* For positioning remove button */
+            width: 900px; /* Default width, adjusted by JS */
+            transition: width 0.3s ease; /* Smooth width resize */
+            background: #333; /* Dark gray background */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+        /* Style the wrapper inside each video */
+        .player-wrapper {
+            width: 100%; /* Full width of parent */
+        }
+        /* Style the video iframe */
+        .player-frame {
+            width: 100%; /* Full width of parent */
+            background: #222; /* Darker gray background */
+        }
+        /* Style the control panel section */
+        #control_panel {
+            text-align: center; /* Center content */
+            margin-bottom: 10px; /* Space below */
+            padding: 15px; /* Inner spacing */
+            background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        /* Style buttons within control panel */
+        #control_panel .btn {
+            margin: 5px; /* Space around buttons */
+            padding: 8px 15px; /* Inner padding */
+            font-size: 14px; /* Text size */
+            border-radius: 20px; /* Rounded corners */
+            background: #555; /* Medium gray background */
+            border: none; /* No border */
+            color: #fff; /* White text */
+            transition: background 0.3s, transform 0.1s; /* Smooth color and scale change */
+        }
+        /* Button hover effect */
+        #control_panel .btn:hover {
+            background: #777; /* Lighter gray on hover */
+            transform: scale(1.05); /* Slightly enlarge */
+        }
+        /* Button active (click) effect */
+        #control_panel .btn:active {
+            transform: scale(0.95); /* Slightly shrink */
+        }
+        /* Style the row containing URL and title boxes */
+        .control-row {
+            display: flex; /* Flexbox layout */
+            justify-content: space-between; /* Space elements evenly */
+            gap: 15px; /* Space between elements */
+            width: 100%; /* Full width */
+            max-width: 1400px; /* Limit max width */
+            margin: 0 auto 15px; /* Center with bottom space */
+        }
+        /* Style the container for the URL input box */
+        #videoUrlsContainer {
+            position: absolute; /* Fixed position on left */
+            left: 20px; /* Distance from left edge */
+            top: 70px; /* Below header */
+            width: 320px; /* Fixed width */
+        }
+        /* Style the URL input textbox */
+        #videoUrls {
+            height: 180px; /* Fixed height per your preference */
+            background: #2a2a2a; /* Dark gray background */
+            color: #e0e0e0; /* Light gray text */
+            border: 1px solid #444; /* Subtle border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Inner spacing */
+            font-size: 14px; /* Text size */
+            resize: none; /* Prevent resizing */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2); /* Inner shadow */
+            overflow-y: auto; /* Scroll if content exceeds height */
+        }
+        /* Style URL textbox when focused */
+        #videoUrls:focus {
+            outline: none; /* Remove default outline */
+            border-color: #666; /* Highlight border */
+        }
+        /* Style the container for the title box */
+        #videoTitlesContainer {
+            flex-grow: 1; /* Expand to fill space */
+            display: flex; /* Flexbox layout */
+            justify-content: center; /* Center content */
+        }
+        /* Style the title list box */
+        #videoTitles {
+            min-height: 120px; /* Minimum height */
+            max-height: 300px; /* Maximum height */
+            width: 550px; /* Fixed width per your preference */
+            overflow-y: auto; /* Scroll if content exceeds height */
+            background: #fff; /* White background */
+            color: #333; /* Dark text */
+            padding: 15px; /* Inner spacing */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 8px; /* Rounded corners */
+            overflow: auto; /* Scroll if needed */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Outer shadow */
+        }
+        /* Style links within title list */
+        #videoTitles a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none; /* No underline by default */
+            display: block; /* Each link on new line */
+            margin-bottom: 8px; /* Space between links */
+            font-size: 14px; /* Text size */
+            transition: color 0.3s; /* Smooth color change */
+        }
+        /* Title link hover effect */
+        #videoTitles a:hover {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        /* Style error message display */
+        .error-message {
+            color: #ff5555; /* Red text */
+            font-size: 14px; /* Text size */
+            margin-top: 10px; /* Space above */
+            text-align: center; /* Center text */
+            background: rgba(40, 40, 40, 0.8); /* Dark semi-transparent background */
+            padding: 5px 10px; /* Inner padding */
+            border-radius: 5px; /* Rounded corners */
+        }
+        /* Style the remove button on each video */
+        .remove-btn {
+            position: absolute; /* Position over video */
+            top: 10px; /* Distance from top */
+            right: 10px; /* Distance from right */
+            background: #ff4444; /* Red background */
+            border: none; /* No border */
+            color: #fff; /* White icon */
+            padding: 5px 10px; /* Inner padding */
+            border-radius: 15px; /* Rounded corners */
+            cursor: pointer; /* Hand cursor */
+            transition: background 0.3s, transform 0.1s; /* Smooth color and scale change */
+        }
+        /* Remove button hover effect */
+        .remove-btn:hover {
+            background: #cc0000; /* Darker red on hover */
+            transform: scale(1.1); /* Slightly enlarge */
+        }
+        /* Remove button active (click) effect */
+        .remove-btn:active {
+            transform: scale(0.9); /* Slightly shrink */
+        }
+        /* Style the footer row at the bottom */
+        .footer-row {
+            background: rgba(40, 40, 40, 0.9); /* Dark semi-transparent background */
+            padding: 15px; /* Inner spacing */
+            text-align: center; /* Center content */
+            border-top: 1px solid #444; /* Subtle top border */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        /* Style footer text */
+        .footer-row p {
+            margin: 0; /* Remove default margin */
+            font-size: 14px; /* Text size */
+            color: #ccc; /* Light gray text */
+        }
+        /* Style optional footer images */
+        .footer-row img {
+            max-height: 40px; /* Limit image height */
+            vertical-align: middle; /* Align with text */
+            margin: 0 10px; /* Space around images */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header row for title or logo -->
+    <div class="header-row">
+        <h1>Multi YouTube Player</h1> <!-- Page title -->
+        <!-- Optional: Add logo or graphic -->
+        <!-- <img src="path/to/logo.png" alt="Logo"> -->
+    </div>
+    <!-- Control panel section with inputs and buttons -->
+    <div id="control_panel">
+        <!-- Row for URL and title boxes -->
+        <div class="control-row">
+            <!-- Container for URL input -->
+            <div id="videoUrlsContainer" class="form-group">
+                <textarea class="form-control" id="videoUrls" placeholder="Enter YouTube URLs (one per line)"></textarea> <!-- URL input box -->
+            </div>
+            <!-- Container for title list -->
+            <div id="videoTitlesContainer">
+                <div id="videoTitles"></div> <!-- Title list box -->
+            </div>
+        </div>
+        <!-- Control buttons -->
+        <button class="btn btn-secondary loadbtn" onclick="loadVideos()"> <!-- Load videos button -->
+            <i class="fas fa-upload"></i> Load
+        </button>
+        <button class="btn btn-secondary refreshbtn" onclick="refreshAll()"> <!-- Refresh all videos button -->
+            <i class="fas fa-undo"></i> Refresh
+        </button>
+        <button class="btn btn-secondary playbtn" onclick="playAll()"> <!-- Play all videos button -->
+            <i class="fas fa-play"></i> Play
+        </button>
+        <button class="btn btn-secondary pausebtn" onclick="pauseAll()"> <!-- Pause all videos button -->
+            <i class="fas fa-pause"></i> Pause
+        </button>
+        <button class="btn btn-secondary mutebtn" onclick="muteAll()"> <!-- Mute all videos button -->
+            <i class="fas fa-volume-mute"></i> Mute
+        </button>
+        <button class="btn btn-secondary unmutbtn" onclick="unmuteAll()"> <!-- Unmute all videos button -->
+            <i class="fas fa-volume-up"></i> Unmute
+        </button>
+        <button class="btn btn-secondary clearbtn" onclick="clearTitles()"> <!-- Clear title list button -->
+            <i class="fas fa-trash"></i> Clear List
+        </button>
+        <!-- Error message display area -->
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+    <!-- Container for video players -->
+    <div id="videoContainer" class="video-container"></div>
+    <!-- Footer row for text or logos -->
+    <div class="footer-row">
+        <p>Powered by xAI | © 2025</p> <!-- Footer text -->
+        <!-- Optional: Add logos or graphics -->
+        <!-- <img src="path/to/footer-logo1.png" alt="Logo 1"> <img src="path/to/footer-logo2.png" alt="Logo 2"> -->
+    </div>
 
+    <!-- Load YouTube Iframe API for video playback -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Global variables
+        let players = []; // Array to store YouTube player instances
+        let resizeTimeout; // Timeout for debouncing resize events
+        const API_KEY = 'AIzaSyDz1Cu06xyo4LP-Z4oSrh1uldrzgYpgOiQ'; // YouTube Data API key
+
+        // Document ready function to initialize event listeners
+        $(document).ready(function() {
+            loadVideos(); // Load videos on page load
+
+            // Event delegation for clicking title links to add videos
+            $(document).on('click', '#videoTitles a', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+                const url = $(this).data('url'); // Get URL from data attribute
+                const newIndex = Math.max(...players.map((p, i) => p ? i : -1), -1) + 1; // Find next available index
+                addVideoPlayer(url, newIndex); // Add video player
+                console.log(`Added video from title click: ${url} at index ${newIndex}`); // Log action
+            });
+
+            // Event delegation for clicking remove buttons to delete videos
+            $(document).on('click', '.remove-btn', function(e) {
+                e.preventDefault(); // Prevent default button behavior
+                const index = parseInt($(this).closest('.video-outer').attr('id').split('-')[1], 10); // Get index from parent ID
+                removeVideo(index); // Remove video
+                console.log(`Remove button clicked for index ${index}`); // Log action
+            });
+
+            // Clear URL textbox and load videos on Enter key press
+            $('#videoUrls').on('keypress', function(e) {
+                if (e.which === 13) { // Check for Enter key (code 13)
+                    e.preventDefault(); // Prevent default form behavior
+                    loadVideos(); // Load videos
+                }
+            });
+        });
+
+        // Callback when YouTube Iframe API is ready
+        function onYouTubeIframeAPIReady() {
+            console.log("YouTube API ready"); // Log API readiness
+            window.addEventListener('resize', debounce(adjustPlayerSizes, 200)); // Add resize event listener with debounce
+        }
+
+        // Function to load videos from URL textbox
+        function loadVideos() {
+            console.log("Loading new videos..."); // Log start of loading
+            $('#errorMessage').html(''); // Clear error messages
+            players.forEach(player => player && player.destroy && player.destroy()); // Destroy existing players
+            players = []; // Reset players array
+            $('#videoContainer').empty(); // Clear video container
+
+            const urls = $('#videoUrls').val().split('\n').map(url => url.trim()).filter(url => url.length > 0); // Parse URLs from textbox
+            if (urls.length === 0) { // Check if no URLs provided
+                $('#errorMessage').html('No URLs provided.'); // Show error
+                setTimeout(() => $('#videoUrls').val(''), 500); // Clear textbox after 500ms
+                return; // Exit function
+            }
+
+            urls.forEach((url, index) => { // Loop through URLs
+                const videoId = getVideoId(url); // Extract video ID
+                if (videoId) { // If valid ID
+                    console.log(`Loading video ${index}: ${videoId}`); // Log loading
+                    addVideoPlayer(url, index); // Add video player
+                    fetchVideoTitle(videoId, index, url); // Fetch and append title
+                } else {
+                    $('#errorMessage').append(`Invalid YouTube URL at line ${index + 1}.<br>`); // Show error for invalid URL
+                }
+            });
+
+            setTimeout(() => $('#videoUrls').val(''), 500); // Clear textbox after 500ms
+        }
+
+        // Function to add a video player
+        function addVideoPlayer(url, index) {
+            const videoId = getVideoId(url); // Extract video ID
+            if (!videoId) return; // Exit if invalid ID
+
+            const $outerDiv = $(`<div class="video-outer" id="outer-${index}"></div>`); // Create outer video div
+            const $wrapperDiv = $(`<div class="player-wrapper" id="wrapper-${index}"></div>`); // Create wrapper div
+            const $playerDiv = $(`<div class="player-frame" id="player-${index}"></div>`); // Create player div
+            const $removeBtn = $(`<button class="remove-btn"><i class="fas fa-times"></i></button>`); // Create remove button
+
+            $wrapperDiv.append($playerDiv); // Add player div to wrapper
+            $outerDiv.append($wrapperDiv).append($removeBtn); // Add wrapper and button to outer div
+            $('#videoContainer').append($outerDiv); // Add outer div to container
+
+            // Create new YouTube player instance
+            players[index] = new YT.Player(`player-${index}`, {
+                width: '900', // Initial width (adjusted by JS)
+                videoId: videoId, // Video ID
+                playerVars: {
+                    'autoplay': 1, // Autoplay video
+                    'playsinline': 1, // Play inline on mobile
+                    'controls': 1 // Show player controls
+                },
+                events: {
+                    'onReady': () => { // When player is ready
+                        console.log(`Player ${index} ready`); // Log readiness
+                        adjustPlayerSizes(); // Adjust video sizes
+                    },
+                    'onError': (e) => { // On player error
+                        console.log(`Player ${index} error: ${e.data}`); // Log error
+                        $('#errorMessage').append(`Video ${index + 1} failed to load and was removed.<br>`); // Show error
+                        removeVideo(index); // Remove failed video
+                    }
+                }
+            });
+        }
+
+        // Function to fetch and display video title
+        function fetchVideoTitle(videoId, index, url) {
+            // Fetch video title using YouTube Data API
+            $.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`, (data) => {
+                if (data.items && data.items.length > 0) { // If title found
+                    const title = data.items[0].snippet.title; // Extract title
+                    $('#videoTitles').append(`<a data-index="${index}" data-url="${url}">${title}</a>\n`); // Append title as clickable link
+                } else {
+                    console.log(`No title found for video ${index}`); // Log missing title
+                    $('#videoTitles').append(`<a data-index="${index}" data-url="${url}">Video ${index + 1} (Title unavailable)</a>\n`); // Append placeholder
+                }
+            }).fail(() => { // On API failure
+                console.log(`Failed to fetch title for video ${index}`); // Log failure
+                $('#videoTitles').append(`<a data-index="${index}" data-url="${url}">Video ${index + 1} (Title fetch failed)</a>\n`); // Append error placeholder
+            });
+        }
+
+        // Function to clear the title list
+        function clearTitles() {
+            console.log("Clearing title list..."); // Log action
+            $('#videoTitles').html(''); // Empty title box
+        }
+
+        // Function to refresh all videos (restart from beginning)
+        function refreshAll() {
+            console.log("Refreshing all videos..."); // Log action
+            players.forEach(player => { // Loop through players
+                if (player && player.seekTo) { // If player exists and supports seek
+                    player.seekTo(0); // Reset to start
+                    player.playVideo(); // Play video
+                }
+            });
+        }
+
+        // Function to adjust video player sizes based on container width
+        function adjustPlayerSizes() {
+            console.log("Adjusting player sizes..."); // Log action
+            const $container = $('#videoContainer'); // Get video container
+            const outers = $container.find('.video-outer'); // Get all video wrappers
+            if (outers.length === 0) return; // Exit if no videos
+
+            $container.hide().show(0); // Force DOM refresh for accurate width
+
+            const containerWidth = $container.width(); // Get container width
+            const minWidth = 280; // Minimum video width
+            const maxWidth = 900; // Maximum video width
+            const gap = 5; // Gap between videos
+
+            const totalMaxWidthNeeded = outers.length * maxWidth + (outers.length - 1) * gap; // Max width needed
+            let optimalWidth = (containerWidth >= totalMaxWidthNeeded) // Calculate optimal width
+                ? maxWidth // Use max if container is wide enough
+                : Math.max(minWidth, Math.min(maxWidth, (containerWidth - (outers.length - 1) * gap) / outers.length)); // Fit within container
+            console.log(`Container width: ${containerWidth}, Optimal width: ${optimalWidth}, Outers: ${outers.length}`); // Log sizing info
+
+            outers.each(function() { // Loop through video wrappers
+                const index = parseInt(this.id.split('-')[1], 10); // Get index from ID
+                const player = players[index]; // Get player instance
+                if (player) { // If player exists
+                    const $outer = $(this); // Current video wrapper
+                    $outer.css('width', `${optimalWidth}px`); // Set width
+                    const height = optimalWidth * (9 / 16); // Calculate height (16:9 aspect ratio)
+                    player.setSize(optimalWidth, height); // Update player size
+                    $outer.css('height', `${height}px`); // Set wrapper height
+                }
+            });
+        }
+
+        // Function to remove a video player
+        function removeVideo(index) {
+            console.log(`Removing video ${index}`); // Log action
+            const $outer = $(`#outer-${index}`); // Get video wrapper
+            if ($outer.length) { // If video exists
+                if (players[index] && players[index].destroy) { // If player exists and can be destroyed
+                    players[index].destroy(); // Destroy player
+                    console.log(`Player ${index} destroyed`); // Log destruction
+                }
+                $outer.remove(); // Remove video DOM element
+                console.log(`Outer div ${index} removed`); // Log removal
+
+                players[index] = null; // Clear player from array
+
+                setTimeout(adjustPlayerSizes, 100); // Resize videos after 100ms
+
+                // Log DOM and array state after 150ms
+                setTimeout(() => {
+                    const remainingOuters = $('#videoContainer').find('.video-outer'); // Get remaining videos
+                    console.log(`Remaining video-outer elements: ${remainingOuters.length}, active players: ${players.filter(p => p !== null).length}, total players array length: ${players.length}`); // Log counts
+                    remainingOuters.each(function(i) { // Log remaining indices
+                        console.log(`Remaining outer index: ${this.id.split('-')[1]}`);
+                    });
+                    players.forEach((player, i) => { // Log active players
+                        if (player) console.log(`Player array index ${i} still present`);
+                    });
+                }, 150);
+            } else {
+                console.log(`Video ${index} not found in DOM, cleaning up array`); // Log if not found
+                players[index] = null; // Clear from array
+                setTimeout(adjustPlayerSizes, 100); // Resize videos
+            }
+        }
+
+        // Function to extract YouTube video ID from URL
+        function getVideoId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/; // Regex to match YouTube URL patterns
+            const match = url.match(regExp); // Match URL against regex
+            return (match && match[2].length === 11) ? match[2] : null; // Return 11-char ID or null
+        }
+
+        // Function to play all videos
+        function playAll() {
+            console.log("Playing all"); // Log action
+            players.forEach(player => { // Loop through players
+                if (player && player.playVideo) { // If player exists and supports play
+                    player.playVideo(); // Play video
+                }
+            });
+        }
+
+        // Function to pause all videos
+        function pauseAll() {
+            console.log("Pausing all"); // Log action
+            players.forEach(player => { // Loop through players
+                if (player && player.pauseVideo) { // If player exists and supports pause
+                    player.pauseVideo(); // Pause video
+                }
+            });
+        }
+
+        // Function to mute all videos
+        function muteAll() {
+            console.log("Muting all"); // Log action
+            $('#videoContainer').find('.video-outer').each(function() { // Loop through video wrappers
+                const index = parseInt(this.id.split('-')[1], 10); // Get index from ID
+                const player = players[index]; // Get player instance
+                if (player && typeof player.mute === 'function') { // If player exists and supports mute
+                    player.mute(); // Mute video
+                    console.log(`Muted player ${index}`); // Log action
+                }
+            });
+        }
+
+        // Function to unmute all videos
+        function unmuteAll() {
+            console.log("Unmuting all"); // Log action
+            $('#videoContainer').find('.video-outer').each(function() { // Loop through video wrappers
+                const index = parseInt(this.id.split('-')[1], 10); // Get index from ID
+                const player = players[index]; // Get player instance
+                if (player && typeof player.unMute === 'function') { // If player exists and supports unmute
+                    player.unMute(); // Unmute video
+                    console.log(`Unmuted player ${index}`); // Log action
+                }
+            });
+        }
+
+        // Debounce function to limit resize event frequency
+        function debounce(func, wait) {
+            return function() {
+                clearTimeout(resizeTimeout); // Clear previous timeout
+                resizeTimeout = setTimeout(func, wait); // Set new timeout
+            }
+        }
+    </script>
+</body>
+</html>
